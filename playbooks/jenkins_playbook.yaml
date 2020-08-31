@@ -1,0 +1,9 @@
+- hosts: target_host_1
+  become: yes
+  pre_tasks:
+    - name: Add java
+      apt:
+        name: default-jre
+        state: present
+  roles:
+    - role: geerlingguy.jenkins

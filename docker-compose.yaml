@@ -1,0 +1,23 @@
+version: '3'
+volumes:
+  key: # create volume to share ssh public key between containers
+services:
+  ansible:
+    container_name: ansible
+    build:
+      context: ansible
+    links:
+      - "target_host_1"
+    volumes:
+      - key:/mnt
+      - ./playbooks:/etc/ansible/playbooks
+  target_host_1:
+    container_name: target_host_1
+    build:
+      context: target_host_1
+    ports:
+      - "127.0.0.1:8080:8080" # only allow access to jenkins from local machine only
+    expose:
+      - "22"
+    volumes:
+      - key:/root/.ssh
