@@ -17,11 +17,11 @@ Run the example jenkins playbook present in directory playbooks/:
 
 `docker exec -ti ansible ansible-playbook playbooks/jenkins_playbook.yaml`
 
-Running this playbook will install jenkins and its dependecies in container target_host_1
+Running this playbook will install jenkins and its dependecies in container target_host_1.
 
 Once installed you can navigate to jenkins interface at http://localhost:8080/
 
-You can add more playbooks in playbooks/ without the need to restart the ansible container.
+The ansible container mounts local directory playbooks/. Playbooks can therefore be added or updated locally in playbooks/ without the need to restart the ansible container.
 
 ### Adding additional target hosts
 
