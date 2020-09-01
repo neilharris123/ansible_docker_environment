@@ -25,6 +25,6 @@ Once installed you can navigate to jenkins interface at http://localhost:8080/
 
 ### Adding additional target hosts
 
-Create additional target host containers by adding new entries to file docker-compose.yaml. Be sure if you do this to also add them to the container_name to the hosts files so that ansible is aware of the new target host.
+Create additional target host containers by adding new entries to file docker-compose.yaml and the hosts file.
 
 
