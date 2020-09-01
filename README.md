@@ -2,8 +2,8 @@
 
 ## Description
 
-This project utilizes docker-compose to start an ansible container and a seperate debian-based host container to which you can apply ansible configurations.
-This provides an isolated local ansible environment, useful for testing ansible configurations without the need for target VMs or physical hosts.
+This project utilizes docker-compose to start an ansible container and a seperate debian-based target host.
+This provides an isolated ansible environment, useful for testing ansible configurations, and avoiding the need for target VMs, physical hosts or local installations.
 
 ## Usage
 
@@ -17,7 +17,7 @@ Run the example jenkins playbook present in directory playbooks/:
 
 `docker exec -ti ansible ansible-playbook playbooks/jenkins_playbook.yaml`
 
-Running this playbook will install jenkins and its dependecies in container target_host_1.
+Running this playbook will install jenkins and its dependencies in container target_host_1.
 
 Once installed you can navigate to jenkins interface at http://localhost:8080/
 
@@ -25,5 +25,6 @@ The ansible container mounts local directory playbooks/. Playbooks can therefore
 
 ### Adding additional target hosts
 
-Create additional target host containers by adding new entries to file docker-compose-yaml. Be sure if you do this to also add them to the container_name to the hosts files so that ansible is aware of the new target host.
+Create additional target host containers by adding new entries to file docker-compose.yaml. Be sure if you do this to also add them to the container_name to the hosts files so that ansible is aware of the new target host.
+
 
