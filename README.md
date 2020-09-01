@@ -13,15 +13,15 @@ This provides an isolated ansible environment, useful for testing ansible config
 
 ### Running playbooks
 
+The ansible container mounts local directory playbooks/ as a volume. Playbooks can therefore be added or updated locally in playbooks/ without the need to restart the ansible container.
+
 Run the example jenkins playbook present in directory playbooks/:
 
 `docker exec -ti ansible ansible-playbook playbooks/jenkins_playbook.yaml`
 
-Running this playbook will install jenkins and its dependencies in container target_host_1.
+This will install jenkins and its dependencies in container target_host_1.
 
 Once installed you can navigate to jenkins interface at http://localhost:8080/
-
-The ansible container mounts local directory playbooks/. Playbooks can therefore be added or updated locally in playbooks/ without the need to restart the ansible container.
 
 ### Adding additional target hosts
 
