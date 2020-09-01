@@ -3,7 +3,7 @@
 ## Description
 
 This project utilizes docker-compose to start an ansible container and a seperate debian-based host container to which you can apply ansible configurations.
-The purpose of this is to provide an isolated local ansible environment, useful for testing ansible configurations without the need for target VMs or physical hosts.
+This provides an isolated local ansible environment, useful for testing ansible configurations without the need for target VMs or physical hosts.
 
 ## Usage
 
