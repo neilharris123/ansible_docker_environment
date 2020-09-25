@@ -9,5 +9,7 @@ RUN mkdir /etc/ansible
 WORKDIR /etc/ansible
 COPY ansible.cfg /etc/ansible/
 ADD environments /etc/ansible/environments
+RUN for d in environments/*/group_vars/all; do ln -s /etc/ansible/environments/000_cross_env_vars $d; done
+
 
 CMD bash -c '/bin/cp ~/.ssh/id_rsa.pub /mnt/authorized_keys && /usr/bin/tail -f /dev/null'
