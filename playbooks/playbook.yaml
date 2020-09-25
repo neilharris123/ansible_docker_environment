@@ -1,0 +1,34 @@
+- hosts: dev_host
+  become: yes
+  tasks:
+    - name: Add nginx
+      apt:
+        name: nginx
+        state: present
+    - name: Add template
+      template:
+        src=test.tpl
+        dest=/tmp
+- hosts: pre_host
+  become: yes
+  tasks:
+    - name: Add nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Add template
+      template:
+        src=test.tpl
+        dest=/tmp
+- hosts: prod_host
+  become: yes
+  tasks:
+    - name: Add nginx
+      apt:
+        name: nginx
+        state: present
+    - name: Add template
+      template:
+        src=test.tpl
+        dest=/tmp

@@ -7,6 +7,7 @@ apk add --no-cache ansible bash openssh-client && rm -rf /var/cache/apk/*
 RUN ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && cp /root/.ssh/id_rsa.pub /mnt/authorized_keys
 RUN mkdir /etc/ansible
 WORKDIR /etc/ansible
-COPY hosts ansible.cfg /etc/ansible/
+COPY ansible.cfg /etc/ansible/
+ADD environments /etc/ansible/environments
 
 CMD bash -c '/bin/cp ~/.ssh/id_rsa.pub /mnt/authorized_keys && /usr/bin/tail -f /dev/null'

@@ -7,16 +7,39 @@ services:
     build:
       context: ansible
     links:
-      - "target_host_1"
+      - "dev_host"
+      - "pre_host"
+      - "prod_host"
     volumes:
       - key:/mnt
       - ./playbooks:/etc/ansible/playbooks
-  target_host_1:
-    container_name: target_host_1
+  dev_host:
+    container_name: dev_host
     build:
-      context: target_host_1
+      context: target_base
     ports:
       - "127.0.0.1:8080:8080" # only allow access to jenkins from local machine only
+    expose:
+      - "22"
+    volumes:
+      - key:/root/.ssh
+  pre_host:
+    container_name: pre_host
+    build:
+      context: target_base
+    ports:
+      - "127.0.0.1:8081:8081" # only allow access to jenkins from local machine only
+    expose:
+      - "22"
+    volumes:
+      - key:/root/.ssh
+
+  prod_host:
+    container_name: prod_host
+    build:
+      context: target_base
+    ports:
+      - "127.0.0.1:8082:8082" # only allow access to jenkins from local machine only
     expose:
       - "22"
     volumes:
