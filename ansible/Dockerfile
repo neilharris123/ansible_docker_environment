@@ -8,6 +8,5 @@ RUN ssh-keygen -q -t rsa -N '' -f /root/.ssh/id_rsa && cp /root/.ssh/id_rsa.pub 
 RUN mkdir /etc/ansible
 WORKDIR /etc/ansible
 COPY hosts ansible.cfg /etc/ansible/
-RUN ansible-galaxy install geerlingguy.jenkins
 
 CMD bash -c '/bin/cp ~/.ssh/id_rsa.pub /mnt/authorized_keys && /usr/bin/tail -f /dev/null'
